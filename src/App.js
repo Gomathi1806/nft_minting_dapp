@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import { MoralisProvider } from 'react-moralis'
+import NftMinter from './pages/NFTMinter/NftMinter'
 
-function App() {
+function App () {
+  const moralisServerUrl = process.env.REACT_APP_MORALIS_SERVER_URL
+  const moralisAppId = process.env.REACT_APP_MORALIS_APP_ID
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <MoralisProvider
+      appId='8fyJUFQbQLY1d2VZcErT3QNYis8eBRI8OILFk7bI'
+      serverUrl='https://lrib7uhxuwbs.usemoralis.com:2053/server'
+    >
+      <div className='App'>
+        <main>
+          <NftMinter />
+          <div className='App-overlay'></div>
+        </main>
+      </div>
+    </MoralisProvider>
+  )
 }
 
-export default App;
+export default App
